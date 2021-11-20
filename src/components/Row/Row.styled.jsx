@@ -3,9 +3,12 @@ import { Col } from '../Col/Col.styled';
 import FlexDiv from '../FlexDiv';
 
 export const Row = styled(FlexDiv)`
-  padding: 10px 0;
+  margin-bottom: 10px;
   
   ${Col} {
-    padding: 8px;
+    padding: ${({ gutter }) => {
+      const padding = gutter ?? 8; 
+      return `0 ${padding}px ${padding * 2 }px ${padding}px`
+    }};
   }
 `;

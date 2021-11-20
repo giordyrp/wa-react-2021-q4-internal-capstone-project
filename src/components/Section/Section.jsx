@@ -3,12 +3,12 @@ import * as Styled from './Section.styled';
 import PropTypes from 'prop-types';
 import FlexDiv from '../FlexDiv';
 
-const Section = ({ title, actions, className, children }) => {
+const Section = ({ title, action, className, children }) => {
   return (
     <Styled.Section className={className}>
-      <FlexDiv justify="space-between">
+      <FlexDiv justify="space-between" align="center">
         {title && <Styled.Title>{title}</Styled.Title>}
-        {actions}
+        {action}
       </FlexDiv>
       {children}
     </Styled.Section>
@@ -17,7 +17,7 @@ const Section = ({ title, actions, className, children }) => {
 
 Section.propTypes = {
   title: PropTypes.string,
-  actions: PropTypes.element
+  action: PropTypes.element
 };
 
 export default Section;

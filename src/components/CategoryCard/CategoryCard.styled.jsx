@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import Card from '../Card';
 
 export const CategoryCard = styled(Card)`
-  width: 180px;
-  height: 160px;
-  margin: 0 1rem;
+  width: ${({ width }) => `${width}px`};
+  margin: ${({ margin }) => `0 ${margin}px`};
   cursor: pointer;
   
   p {
-    margin: 0 10px;
+    margin: 7px 10px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
@@ -25,4 +24,5 @@ export const CategoryCard = styled(Card)`
 
 export const Cover = styled.img`
   height: 100px;
+  object-fit: cover;
 `;

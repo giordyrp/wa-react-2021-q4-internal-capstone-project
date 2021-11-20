@@ -1,11 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const FlexDiv = styled.div`
   display: flex;
-  justify-content: ${({ justify }) => justify ?? 'center'};
-  align-items: ${({ align }) => align ?? 'center'};
-  flex-direction: ${({ direction }) => direction ?? 'unset'};
-  flex: ${({ flex }) => flex ?? 'unset'};
-  width: ${({ width }) => width ?? 'unset'};
-  flex-wrap: ${({ wrap }) => wrap ?? 'wrap'};
+  ${({ justify, align, direction, flex, wrap, width }) => [
+    justify && css` justify-content: ${justify};`,
+    align && css`align-items: ${align};`,
+    direction && css`flex-direction: ${direction};`,
+    flex && css`flex: ${flex};`,
+    wrap && css`flex-wrap: ${wrap};`,
+    width && css`width: ${width}`,
+  ]}
 `;

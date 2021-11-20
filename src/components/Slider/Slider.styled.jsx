@@ -27,7 +27,7 @@ export const Controls = styled.div`
     }
   }
 
-  button:first-child {
+  button:nth-child(${({ index }) => index + 1}) {
     background-color: white;
     width: 32px;
   }

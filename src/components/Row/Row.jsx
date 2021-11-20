@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Row = (props) => {
   return (
-    <Styled.Row {...props}>
+    <Styled.Row wrap="wrap" {...props}>
       {props.children}
     </Styled.Row>
   );
