@@ -8,15 +8,15 @@ import * as Styled from './Footer.styled';
 const Footer = () => {
   return (
     <Styled.Footer>
-      <Row justify="space-evenly">
+      <Row justify="space-evenly" align="center">
         <Col xs={12} sm={6}>
-          <FlexDiv direction="column">
+          <Styled.LogoFlexDiv direction="column" align="center">
             <Logo dark />
             <p>Everything for your home</p>
-          </FlexDiv>
+          </Styled.LogoFlexDiv>
         </Col>
         <Col xs={12} sm={6}>
-          <FlexDiv>
+          <FlexDiv justify="center">
             <div>
               <Styled.Title>PAGES</Styled.Title>
               <Styled.Links>

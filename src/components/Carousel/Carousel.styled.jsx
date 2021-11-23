@@ -10,6 +10,9 @@ export const Carousel = styled(Section)`
 export const Cards = styled.div`
   display: flex;
   flex-wrap: nowrap;
+  transition: 0.3s;
+  transform: ${({ translatePixels }) => `translateX(${translatePixels}px)`};
+  width: ${({ width }) => `${width}px`};;
 
   ${Card} {
     margin: 0 1rem;
@@ -25,7 +28,7 @@ export const Controls = styled.div`
 
 export const Control = styled(Button)`
   margin-left: 5px;
-  background: none;
+  background-color: unset;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.light};
