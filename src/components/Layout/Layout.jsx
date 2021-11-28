@@ -6,9 +6,9 @@ import * as Styled from './Layout.styled';
 const Layout = ({ children }) => {
   return (
     <Styled.Layout>
-      <div>
+      <Styled.HeaderDiv>
         <Header />
-      </div>
+      </Styled.HeaderDiv>
       <Styled.Content>{children}</Styled.Content>
       <div>
         <Footer />

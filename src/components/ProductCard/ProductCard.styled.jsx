@@ -11,6 +11,8 @@ export const ProductCard = styled(Card)`
 `;
 
 export const Image = styled.img`
+  height: 200px;
+  object-fit: cover;
 `;
 
 export const Name = styled.p`

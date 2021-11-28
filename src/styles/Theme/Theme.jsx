@@ -4,7 +4,9 @@ import { ThemeProvider } from 'styled-components';
 const theme = {
   colors: {
     primary: '#06f',
+    primaryLight: '#3f72fd',
     light: '#dddddd',
+    border: '#dfdfdf',
   },
   breakpoints: {
     sm: '576px',

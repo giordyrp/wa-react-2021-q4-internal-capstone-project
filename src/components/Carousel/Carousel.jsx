@@ -1,12 +1,15 @@
 import React, { useState, useRef } from 'react';
 import * as Styled from './Carousel.styled';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import Spinner from '../Spinner';
 
-const Carousel = ({ title, elements, elementName, card: Card }) => {
+const Carousel = ({ title, elements, elementName, card: Card, loading }) => {
   const [translatePixels, setTranslatePixels] = useState(0);
   const divRef = useRef(null);
 
-  const totalElements = elements.results.length;
+  const totalElements = elements.results?.length || 0;
   const cardWitdh = 200;
   const cardMargin = 10;
   const CardDivWidth = cardWitdh + cardMargin * 2;
@@ -26,24 +29,43 @@ const Carousel = ({ title, elements, elementName, card: Card }) => {
 
   const action = (
     <Styled.Controls>
-      <Styled.Control onClick={onLeft} disabled={translatePixels === 0} rounded>
-        {'<'}
-      </Styled.Control>
-      <Styled.Control onClick={onRight} disabled={totalWidth < divRef.current?.clientWidth} rounded>
-        {'>'}
-      </Styled.Control>
+      <Styled.Control
+        onClick={onLeft}
+        disabled={translatePixels === 0}
+        shape="circle"
+        icon={<FontAwesomeIcon icon={faChevronLeft} />}
+      />
+      <Styled.Control
+        onClick={onRight}
+        disabled={totalWidth < divRef.current?.clientWidth}
+        shape="circle"
+        icon={<FontAwesomeIcon icon={faChevronRight} />}
+      />
     </Styled.Controls>
   );
 
   return (
     <Styled.Carousel title={title} action={action}>
-      <div ref={divRef}>
-        <Styled.Cards width={totalWidth} totalElements={totalElements} translatePixels={translatePixels}>
-          {elements.results.map((element) => (
-            <Card key={element.id} width={cardWitdh} margin={cardMargin} {...{ [elementName]: element }} />
-          ))}
-        </Styled.Cards>
-      </div>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div ref={divRef}>
+          <Styled.Cards
+            width={totalWidth}
+            totalElements={totalElements}
+            translatePixels={translatePixels}
+          >
+            {elements.results.map((element) => (
+              <Card
+                key={element.id}
+                width={cardWitdh}
+                margin={cardMargin}
+                {...{ [elementName]: element }}
+              />
+            ))}
+          </Styled.Cards>
+        </div>
+      )}
     </Styled.Carousel>
   );
 };
@@ -53,6 +75,7 @@ Carousel.propTypes = {
   elements: PropTypes.object.isRequired,
   elementName: PropTypes.string.isRequired,
   card: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default Carousel;

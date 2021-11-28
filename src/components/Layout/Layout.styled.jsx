@@ -9,3 +9,7 @@ export const Layout = styled.div`
 export const Content = styled.div`
   flex-grow: 1;
 `;
+
+export const HeaderDiv = styled.div`
+  z-index: 5;
+`;

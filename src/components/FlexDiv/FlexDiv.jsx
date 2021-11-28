@@ -10,7 +10,7 @@ FlexDiv.propTypes = {
   justify: PropTypes.string,
   align: PropTypes.string,
   direction: PropTypes.string,
-  flex: PropTypes.number,
+  flex: PropTypes.string,
   witdh: PropTypes.string,
 };
 
