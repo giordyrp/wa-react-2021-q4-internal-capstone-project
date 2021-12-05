@@ -5,7 +5,7 @@ import FlexDiv from '../FlexDiv';
 export const Row = styled(FlexDiv)`
   margin-bottom: 10px;
   
-  ${Col} {
+  & > ${Col} {
     padding: ${({ gutter }) => {
       const padding = gutter ?? 8; 
       return `0 ${padding}px ${padding * 2 }px ${padding}px`

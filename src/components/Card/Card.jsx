@@ -2,10 +2,10 @@ import React from 'react';
 import * as Styled from './Card.styled';
 import PropTypes from 'prop-types';
 
-const Card = ({ cover, className, children, onClick }) => {
+const Card = ({ cover, children, ...restProps }) => {
   return (
-    <Styled.Card className={className} onClick={onClick}>
-      {cover}
+    <Styled.Card {...restProps}>
+      {cover && React.cloneElement(cover, { className: 'cover' })}
       {children}
     </Styled.Card>
   );

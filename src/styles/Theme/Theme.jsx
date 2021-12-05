@@ -7,6 +7,7 @@ const theme = {
     primaryLight: '#3f72fd',
     light: '#dddddd',
     border: '#dfdfdf',
+    danger: '#e53935',
   },
   breakpoints: {
     sm: '576px',

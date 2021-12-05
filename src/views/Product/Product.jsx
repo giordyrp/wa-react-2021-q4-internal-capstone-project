@@ -12,11 +12,9 @@ const Product = () => {
     ['lang', 'en-us'],
   ]);
 
-  return product.loading ? (
-    <Spinner />
-  ) : (
+  return (
     <Layout>
-      <ProductDetail product={product.data.results[0]} />
+      {product.loading ? <Spinner /> : <ProductDetail product={product.data.results[0]} />}
     </Layout>
   );
 };

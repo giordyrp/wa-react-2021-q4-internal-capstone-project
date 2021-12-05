@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Col from '../Col';
 import FlexDiv from '../FlexDiv';
 import Logo from '../Logo';
@@ -20,10 +21,10 @@ const Footer = () => {
             <div>
               <Styled.Title>PAGES</Styled.Title>
               <Styled.Links>
-                <a href="/">Home</a>
-                <a href="/">Products</a>
-                <a href="/">Contact</a>
-                <a href="/">Abouts us</a>
+                <Link to="/">Home</Link>
+                <Link to="/products">Products</Link>
+                <Link to="/">Contact</Link>
+                <Link to="/">Abouts us</Link>
               </Styled.Links>
             </div>
           </FlexDiv>
