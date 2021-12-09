@@ -1,16 +1,21 @@
 import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
+import Button from '../Button';
+import Input from '../Input';
+import FlexDiv from '../FlexDiv';
 
-export const Nav = styled.div`
+export const Nav = styled(FlexDiv)`
   margin: 0 auto;
-  padding: 0.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  padding: 0 2rem;
+  height: 65px;
   background-color: white;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: 0 1rem;
+  }
 `;
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(NavLink)`
   padding: 1rem;
   text-decoration: none;
   color: black;
@@ -20,41 +25,52 @@ export const MenuLink = styled.a`
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
   }
+
+  &.active {
+    color: ${({ theme }) => theme.colors.primary};
+  }
+`;
+
+export const MenuLinks = styled.div`
+  height: 100%;
+  width: 20%;
+  background-color: white;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    width: 50%;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
+  }
 `;
 
 export const Menu = styled.nav`
   display: flex;
-  background-color: white;
-
-  ${MenuLink}:first-child {
-    color: ${({ theme }) => theme.colors.primary};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    position: fixed;
-    left: -100%;
-    top: 64px;
-    flex-direction: column;
-    background-color: #fff;
-    width: 100%;
-    border-radius: 0 0 8px 8px;
-    text-align: center;
-    transition: 0.3s;
-    z-index: 2;
-    ${({ active }) => active && css`
-      left: 0
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  left: -100%;
+  top: 64px;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 2;
+  ${({ active }) =>
+    active &&
+    css`
+      left: 0;
     `}
-  }
 `;
 
 export const Hamburger = styled.div`
-  display: none;
+  display: flex;
   flex-direction: column;
   cursor: pointer;
   margin-right: 15px;
   z-index: 3;
   transition: 0.3s;
-  
+
   span {
     height: 2px;
     width: 25px;
@@ -65,22 +81,37 @@ export const Hamburger = styled.div`
     transition: all 0.3s ease-in-out;
   }
 
-  ${({ active }) => active && css`
-    span:nth-child(2) {
-      opacity: 0;
-    }
+  ${({ active }) =>
+    active &&
+    css`
+      span:nth-child(2) {
+        opacity: 0;
+      }
 
-    span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-    }
+      span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
 
-    span:nth-child(3) {
-      transform: translateY(-4px) rotate(-45deg);
-    }
-  `}
+      span:nth-child(3) {
+        transform: translateY(-4px) rotate(-45deg);
+      }
+    `}
+`;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: flex;
+export const ShowSearchButton = styled(Button)`
+  display: none;
+  margin-right: 10px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: block;
   }
-    
+`;
+
+export const DesktopSearchInput = styled(Input.Search)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    display: none;
+  }
+`;
+
+export const MobileSearchInput = styled(Input.Search)`
+  flex-grow: 1;
 `;

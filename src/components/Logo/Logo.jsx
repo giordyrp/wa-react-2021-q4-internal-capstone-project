@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import LogoLight from '../../assets/images/ehome-light.png';
 import LogoDark from '../../assets/images/ehome-dark.png';
 import * as Styled from './Logo.styled';
 import PropTypes from 'prop-types';
-import { RouterContext } from '../../contexts/routerContext';
+import { useHistory } from 'react-router';
 
 const Logo = (props) => {
-  const { setRoute } = useContext(RouterContext);
-
-return <Styled.Logo src={props.dark ? LogoDark : LogoLight} onClick={() => setRoute('/')} />;
-
+  const history = useHistory();
+  return <Styled.Logo src={props.dark ? LogoDark : LogoLight} onClick={() => history.push('/')} />;
 };
 
 Logo.propTypes = {

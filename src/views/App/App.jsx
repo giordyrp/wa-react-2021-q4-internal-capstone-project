@@ -1,23 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Home from '../Home';
 import Products from '../Products';
+import Product from '../Product';
+import Search from '../Search';
 import GlobalStyle from '../../styles/GlobalStyle';
 import Theme from '../../styles/Theme';
-import { RouterContext } from '../../contexts/routerContext';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-const routes = {
-  '/': Home,
-  '/products': Products,
-};
 
 const App = () => {
-  const { route } = useContext(RouterContext);
-  const Component = routes[route];
-
   return (
     <Theme>
       <GlobalStyle />
-      <Component />
+      <Switch>
+        <Route path="/search" component={Search} />
+        <Route path="/product/:id" component={Product}/>
+        <Route path="/products" component={Products}/>
+        <Route path={['/', 'home']} exact component={Home}/>
+        <Redirect to="/"/>
+      </Switch>
     </Theme>
   );
 };
