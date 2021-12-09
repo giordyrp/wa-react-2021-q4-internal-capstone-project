@@ -1,4 +1,5 @@
 import React from 'react';
+import ErrorBoundary from '../ErrorBoundary';
 import Footer from '../Footer';
 import Header from '../Header';
 import * as Styled from './Layout.styled';
@@ -9,7 +10,9 @@ const Layout = ({ children }) => {
       <Styled.HeaderDiv>
         <Header />
       </Styled.HeaderDiv>
-      <Styled.Content>{children}</Styled.Content>
+      <Styled.Content>
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </Styled.Content>
       <div>
         <Footer />
       </div>

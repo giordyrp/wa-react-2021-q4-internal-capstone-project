@@ -1,5 +1,4 @@
-import React from 'react';
-import Col from '../Col';
+import React, { useContext } from 'react';
 import ProductCard from '../ProductCard/ProductCard';
 import Row from '../Row';
 import PropTypes from 'prop-types';
@@ -8,12 +7,14 @@ import Spinner from '../Spinner';
 import Empty from '../Empty';
 import { useHistory } from 'react-router';
 import { setParam } from '../../utils/functions';
+import { ProductCartContext } from '../../contexts/ProductCartContext';
 
 const ProductList = ({ products, loading, grid, pagination }) => {
+  const { cart, addProductToCart, removeProductFromCart, setProductCountFromCart } = useContext(ProductCartContext);
   const page = products.page;
   const totalPages = products.total_pages;
 
-  const history = useHistory();  
+  const history = useHistory();
   const onChangePage = (page) => {
     history.push(setParam('page', page));
   };
@@ -27,27 +28,29 @@ const ProductList = ({ products, loading, grid, pagination }) => {
           <Empty message="No Results" />
         ) : (
           products.results.map((product) => (
-            <Col key={product.id} {...grid}>
-              <ProductCard product={product} />
-            </Col>
+              <ProductCard
+                key={product.id}
+                product={product}
+                cartProduct={cart.find((cartProduct) => cartProduct.id === product.id)}
+                addProductToCart={addProductToCart}
+                removeProductFromCart={removeProductFromCart}
+                setProductCountFromCart={setProductCountFromCart}
+                grid={grid}
+              />
           ))
         )}
       </Row>
-      {!loading && pagination && products.results_size > 0 && <Pagination page={page} totalPages={totalPages} onChange={onChangePage} />}
+      {!loading && pagination && products.results_size > 0 && (
+        <Pagination page={page} totalPages={totalPages} onChange={onChangePage} />
+      )}
     </>
   );
 };
 
 ProductList.propTypes = {
   products: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired, 
-  grid: PropTypes.shape({
-    xs: PropTypes.number,
-    sm: PropTypes.number,
-    md: PropTypes.number,
-    lg: PropTypes.number,
-  }),
-  pagination: PropTypes.bool
+  loading: PropTypes.bool.isRequired,
+  pagination: PropTypes.bool,
 };
 
 export default ProductList;

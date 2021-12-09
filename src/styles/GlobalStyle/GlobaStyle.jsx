@@ -13,8 +13,11 @@ export default createGlobalStyle`
 
   #root {
     background-color: rgb(247, 248, 249);
-    font-family: 'Nunito Sans', sans-serif;
     overflow-y: auto;
+  }
+
+  #root, textarea {
+    font-family: 'Nunito Sans', sans-serif;
   }
 
   #root * {

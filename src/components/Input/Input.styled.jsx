@@ -6,7 +6,8 @@ export const Input = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.border };
   border-radius: 4px;
   padding: 0 10px;
-  ${({ width }) => width && css`width: ${width}` };
+
+  ${({ width }) => width && css`width: ${width};` };
 `;
 
 export const SearchInput = styled(Input)`
@@ -15,4 +16,11 @@ export const SearchInput = styled(Input)`
 
 export const SearchButton = styled(Button)`
   border-radius: 0 8px 8px 0;
+`;
+
+export const TextArea = styled.textarea`
+  border: 1px solid ${({ theme }) => theme.colors.border };
+  border-radius: 4px;
+  resize: none;
+  padding: 10px;
 `;

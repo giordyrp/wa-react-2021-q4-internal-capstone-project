@@ -14,14 +14,21 @@ export const Button = styled.button`
   border: none;
   padding: 10px 13px;
   border-radius: 8px;
+  ${({ width }) => width && css`width: ${width};` };
 
-  ${({ theme, color }) => {
+  ${({ disabled }) => disabled && css`
+      color:rgb(179, 185, 194) !important;
+      background-color: rgb(230, 235, 241) !important;
+  `}
+
+  ${({ theme, color, disabled }) => {
     if (!color) return null;
 
     const colors = {
       primary: ['white', theme.colors.primary],
       transparent: ['black', 'transparent'],
       white: ['black', 'white'],
+      danger: ['white', theme.colors.danger]
     };
 
     return css`

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Input from '../Input';
 import Button from '../Button';
 import FlexDiv from '../FlexDiv';
 
@@ -30,17 +29,6 @@ export const Tag = styled.span`
 export const Price = styled.p`
   font-weight: bold;
   font-size: 24px;
-`;
-
-export const Count = styled(Input)`
-  margin: 0 5px;
-  width: 40px;
-`;
-
-export const CountButton = styled(Button)`
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.primary};
-  border: 1px solid ${({ theme }) => theme.colors.border} !important;
 `;
 
 export const ActionButton = styled(Button)`

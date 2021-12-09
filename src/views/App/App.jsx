@@ -1,23 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Home from '../Home';
 import Products from '../Products';
 import Product from '../Product';
 import Search from '../Search';
 import GlobalStyle from '../../styles/GlobalStyle';
 import Theme from '../../styles/Theme';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
+import Cart from '../Cart';
+import Checkout from '../Checkout';
 
+const routes = [
+  {
+    path: '/checkout',
+    component: Checkout,
+  },
+  {
+    path: '/cart',
+    component: Cart,
+  },
+  {
+    path: '/search',
+    component: Search,
+  },
+  {
+    path: '/product/:id',
+    component: Product,
+  },
+  {
+    path: '/products',
+    component: Products,
+  },
+  {
+    path: ['/', 'home'],
+    component: Home,
+    exact: true,
+  },
+];
 
 const App = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    document.querySelector('#root').scrollTo(0, 0);
+  }, [location.pathname]);
+
   return (
     <Theme>
       <GlobalStyle />
       <Switch>
-        <Route path="/search" component={Search} />
-        <Route path="/product/:id" component={Product}/>
-        <Route path="/products" component={Products}/>
-        <Route path={['/', 'home']} exact component={Home}/>
-        <Redirect to="/"/>
+        {routes.map(route => <Route key={route.path} {...route}/>)}
+        <Redirect to="/" />
       </Switch>
     </Theme>
   );

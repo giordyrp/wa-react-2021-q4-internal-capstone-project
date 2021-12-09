@@ -1,24 +1,38 @@
-import { createContext, useReducer } from 'react';
+import _ from 'lodash';
+import { createContext, useEffect, useReducer } from 'react';
 
-const ProductCartContext = createContext();
+export const ProductCartContext = createContext();
 
 const initialState = {
-  products: [],
+  cart: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'add': {
-      return state;
+    case 'ADD_PRODUCT': {
+      const { id, count } = action.payload;
+      const productIndex = state.cart.findIndex(product => product.id === id);
+      const newCart = _.cloneDeep(state.cart);
+      if (productIndex >= 0) {
+        newCart[productIndex].count += count;
+      } else {
+        newCart.push({ id, count });
+      }
+      return { cart: newCart };
     }
-    case 'remove': {
-      return state;
+    case 'REMOVE_PRODUCT': {
+      const { id } = action.payload;
+      const productIndex = state.cart.findIndex(product => product.id === id);
+      const newCart = _.cloneDeep(state.cart);
+      newCart.splice(productIndex,1);
+      return { cart: newCart };
     }
-    case 'increase': {
-      return state;
-    }
-    case 'decrease': {
-      return state;
+    case 'SET_COUNT': {
+      const { id, count } = action.payload;
+      const productIndex = state.cart.findIndex(product => product.id === id);
+      const newCart = _.cloneDeep(state.cart);
+      newCart[productIndex].count = count;
+      return { cart: newCart };
     }
     default:
       return state;
@@ -26,21 +40,22 @@ const reducer = (state, action) => {
 };
 
 const ProductCartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : initialState);
 
-  const addProduct = (productId) => dispatch({ type: 'add', payload: { id: productId } });
-  const removeProduct = (productId) => dispatch({ type: 'remove', payload: { id: productId } });
-  const increaseProductCount = (productId) =>
-    dispatch({ type: 'increase', payload: { id: productId } });
-  const decreaseProductCount = (productId) =>
-    dispatch({ type: 'decrease', payload: { id: productId } });
+  const addProductToCart = (id, count) => dispatch({ type: 'ADD_PRODUCT', payload: { id, count } });
+  const removeProductFromCart = (id) => dispatch({ type: 'REMOVE_PRODUCT', payload: { id } });
+  const setProductCountFromCart  = (id, count) => dispatch({ type: 'SET_COUNT', payload: { id, count } });
+
+  
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(state));
+  }, [state]);
 
   const value = {
     ...state,
-    addProduct,
-    removeProduct,
-    increaseProductCount,
-    decreaseProductCount,
+    addProductToCart,
+    removeProductFromCart,
+    setProductCountFromCart,
   };
 
   return <ProductCartContext.Provider value={value}>{children}</ProductCartContext.Provider>;
