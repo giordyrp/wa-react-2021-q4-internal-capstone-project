@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const ProductCategoryFilter = ({ categories, loading, selected, onSelect, onClear }) => {
-  const options = categories.results?.map((category) => ({ label: category.data.name, value: category.slugs[0]}));
+  const options = categories.results?.map((category) => ({ label: category.data.name, value: category.slugs[0] }));
 
   return (
     <Styled.ProductFilter>
@@ -21,8 +21,8 @@ const ProductCategoryFilter = ({ categories, loading, selected, onSelect, onClea
             <h3>Categories</h3>
             <Button color="primary" shape="circle" icon={<FontAwesomeIcon icon={faTimes} />} onClick={onClear} />
           </FlexDiv>
-          
-          <Checkbox.Group options={options} value={selected} onChange={onSelect}/>
+
+          <Checkbox.Group options={options} value={selected} onChange={onSelect} dataTestId="category-checkbox" />
         </>
       )}
     </Styled.ProductFilter>

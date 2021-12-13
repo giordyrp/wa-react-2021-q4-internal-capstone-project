@@ -8,15 +8,12 @@ import Layout from '../../components/Layout';
 const Product = () => {
   const params = useParams();
   const product = useQueryAPI([
+    ['q', ['at', 'document.type', 'product']],
     ['q', ['at', 'document.id', params.id]],
     ['lang', 'en-us'],
   ]);
 
-  return (
-    <Layout>
-      {product.loading ? <Spinner /> : <ProductDetail product={product.data.results[0]} />}
-    </Layout>
-  );
+  return <Layout>{product.loading ? <Spinner /> : <ProductDetail product={product.data.results[0]} />}</Layout>;
 };
 
 export default Product;

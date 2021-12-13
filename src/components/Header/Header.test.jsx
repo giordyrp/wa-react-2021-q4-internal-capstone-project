@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import Theme from '../../styles/Theme/Theme';
+
+import { AppWrapper } from '../../utils/testing';
 import Header from './Header';
 
 it('renders header logo', () => {
   render(
-    <Theme>
+    <AppWrapper>
       <Header />
-    </Theme>
+    </AppWrapper>
   );
   const logo = screen.getByTestId('header-logo');
   expect(logo).toBeInTheDocument();

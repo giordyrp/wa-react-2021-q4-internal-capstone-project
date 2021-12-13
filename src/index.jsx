@@ -4,13 +4,18 @@ import App from './views/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import ProductCartProvider from './contexts/ProductCartContext';
+import GlobalStyle from './styles/GlobalStyle';
+import Theme from './styles/Theme';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProductCartProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <Theme>
+        <GlobalStyle />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Theme>
     </ProductCartProvider>
   </React.StrictMode>,
   document.getElementById('root')

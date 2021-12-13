@@ -37,11 +37,7 @@ const Products = () => {
     } else {
       newSelectedCategories.push(categoryId);
     }
-    history.push(
-      newSelectedCategories.length > 0
-        ? setParam('category', newSelectedCategories)
-        : deleteParam('category')
-    );
+    history.push(newSelectedCategories.length > 0 ? setParam('category', newSelectedCategories) : deleteParam('category'));
   };
 
   const onClearCategories = () => history.push(deleteParam('category'));
@@ -52,9 +48,7 @@ const Products = () => {
 
     if (params.has('category')) {
       const categorySlugList = params.get('category').split(',');
-      let categoryIdList = categorySlugList.map(
-        (slug) => categories.data.results.find((category) => category.slugs.includes(slug)).id
-      );
+      let categoryIdList = categorySlugList.map((slug) => categories.data.results.find((category) => category.slugs.includes(slug)).id);
       setSelectedCategories(categorySlugList);
       newProductsQuery.push(['q', ['any', 'my.product.category', categoryIdList]]);
     } else {
@@ -78,21 +72,10 @@ const Products = () => {
       <Section title="Products">
         <Row>
           <Col xs={12} sm={4} md={3}>
-            <ProductCategoryFilter
-              categories={categories.data}
-              loading={categories.loading}
-              selected={selectedCategories}
-              onSelect={onSelectCategory}
-              onClear={onClearCategories}
-            />
+            <ProductCategoryFilter categories={categories.data} loading={categories.loading} selected={selectedCategories} onSelect={onSelectCategory} onClear={onClearCategories} />
           </Col>
           <Col xs={12} sm={8} md={9}>
-            <ProductList
-              products={products.data}
-              loading={products.loading}
-              grid={{ xs: 12, sm: 6, lg: 4 }}
-              pagination
-            />
+            <ProductList products={products.data} loading={products.loading} grid={{ xs: 12, sm: 6, lg: 4 }} pagination />
           </Col>
         </Row>
       </Section>

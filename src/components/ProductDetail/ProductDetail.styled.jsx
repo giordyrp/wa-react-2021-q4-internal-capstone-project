@@ -60,3 +60,10 @@ export const SpecsTable = styled.table`
     border-left: none;
   }
 `;
+
+export const UnavailableMessage = styled.p`
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.warning};
+  padding: 10px;
+  border-radius: 8px;
+`;

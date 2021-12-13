@@ -9,9 +9,9 @@ const CartProductCount = ({ count, setCount, removeProduct, inCart, stock, id })
   const onDecreaseCount = () => {
     count > 1 && setInternalCount(count - 1);
     inCart && count > 0 ? setCount(id, count - 1) : setCount((count) => count - 1);
-    if (count === 1 && inCart) { 
+    if (count === 1 && inCart) {
       removeProduct(id);
-    } 
+    }
   };
 
   const onChangeCount = () => {
@@ -20,10 +20,10 @@ const CartProductCount = ({ count, setCount, removeProduct, inCart, stock, id })
     inCart ? setCount(id, newCount) : setCount(newCount);
   };
 
-  const onIncreaseCount = () => { 
+  const onIncreaseCount = () => {
     setInternalCount(count + 1);
     inCart ? setCount(id, count + 1) : setCount((count) => count + 1);
-  }
+  };
 
   useEffect(() => {
     setInternalCount(count);
@@ -34,13 +34,10 @@ const CartProductCount = ({ count, setCount, removeProduct, inCart, stock, id })
         icon={<FontAwesomeIcon icon={count === 1 && inCart ? faTrash : faMinus} />}
         onClick={onDecreaseCount}
         disabled={count <= 0 || (count === 1 && !inCart)}
+        data-testid="decrease-count-button"
       />
-      <Styled.Count value={internalCount} type="number" onChange={(evt) => setInternalCount(evt.target.value)} onBlur={onChangeCount} />
-      <Styled.CountButton
-        icon={<FontAwesomeIcon icon={faPlus} />}
-        onClick={onIncreaseCount}
-        disabled={count >= stock}
-      />
+      <Styled.Count value={internalCount} type="number" onChange={(evt) => setInternalCount(evt.target.value)} onBlur={onChangeCount} data-testid="quantity-input" />
+      <Styled.CountButton icon={<FontAwesomeIcon icon={faPlus} />} onClick={onIncreaseCount} disabled={count >= stock} data-testid="increase-count-button" />
     </div>
   );
 };

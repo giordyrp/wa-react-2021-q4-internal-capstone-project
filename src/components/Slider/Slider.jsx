@@ -23,10 +23,12 @@ const Slider = ({ banners, loading }) => {
       {loading ? (
         <Spinner />
       ) : (
-        <>
-          <Slide banner={banners.results[index]} />
-          <Styled.Controls index={index}>{controlList}</Styled.Controls>
-        </>
+        banners.results.length > 0 && (
+          <>
+            <Slide banner={banners.results[index]} />
+            <Styled.Controls index={index}>{controlList}</Styled.Controls>
+          </>
+        )
       )}
     </Styled.Slider>
   );

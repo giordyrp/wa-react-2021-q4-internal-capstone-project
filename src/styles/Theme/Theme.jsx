@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 const theme = {
@@ -8,20 +8,17 @@ const theme = {
     light: '#dddddd',
     border: '#dfdfdf',
     danger: '#e53935',
+    warning: '#FFF3C8',
   },
   breakpoints: {
     sm: '576px',
     md: '768px',
     lg: '992px',
-  }
+  },
 };
 
 const Theme = ({ children }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      {children}
-    </ThemeProvider>
-  )
-}
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};
 
 export default Theme;

@@ -10,12 +10,7 @@ const ProductSearch = ({ searchTerm, products }) => {
       <h3>
         Results of the search: <Styled.SearchTerm>{searchTerm}</Styled.SearchTerm>
       </h3>
-      <ProductList
-        products={products.data}
-        loading={products.loading}
-        grid={{ xs: 12, sm: 6, md: 3 }}
-        pagination
-      />
+      <ProductList products={products.data} loading={products.loading} grid={{ xs: 12, sm: 6, md: 3 }} pagination />
     </Section>
   );
 };
