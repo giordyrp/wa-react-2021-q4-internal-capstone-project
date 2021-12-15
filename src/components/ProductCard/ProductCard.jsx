@@ -18,18 +18,17 @@ const ProductCard = React.memo(
       name,
       category: { slug: category },
       price,
-      mainimage: { url: imageSrc },
+      mainimage: { url: imageSrc, alt: imageAlt },
       stock,
     } = data;
 
     const history = useHistory();
-
     return (
       <Col {...grid}>
-        <Styled.ProductCard cover={<Styled.Image src={imageSrc} />} onClick={() => history.push(`/product/${id}`)}>
+        <Styled.ProductCard cover={<Styled.Image src={imageSrc} alt={imageAlt} />} onClick={() => history.push(`/product/${id}`)} data-testid="product-card">
           <Styled.StyledFlexDiv direction="column" align="flex-start" width="100%">
             <Styled.Category data-testid="product-card-category">{category}</Styled.Category>
-            <Styled.Name>{name}</Styled.Name>
+            <Styled.Name data-testid="product-name">{name}</Styled.Name>
             <FlexDiv justify="space-between" align="center" width="100%" onClick={(e) => e.stopPropagation()}>
               <Styled.Price>${price}</Styled.Price>
               {cartProduct ? (

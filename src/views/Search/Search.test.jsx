@@ -16,15 +16,13 @@ const renderWithSearchTerm = (term) => {
 test('renders results when term is found', async () => {
   const term = 'Fair Isle Snowflake';
   renderWithSearchTerm(term);
-  await wait(2);
-  const matches = await screen.findAllByText(term);
-  expect(matches.length > 1).not.toBeTruthy();
+  const matches = await screen.findAllByTestId('product-card');
+  expect(matches.length > 0).toBeTruthy();
 });
 
-test('renders `No Results` messsage when term is not found', async () => {
+test('renders no results messsage when term is not found', async () => {
   const term = 'qwertyuiop';
   renderWithSearchTerm(term);
-  await wait(2);
-  const message = await screen.findByText('No Results');
+  const message = await screen.findByText(/no results/i);
   expect(message).toBeInTheDocument();
 });

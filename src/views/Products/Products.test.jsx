@@ -18,7 +18,7 @@ describe('Product Category Sidebar ', () => {
 
   it('renders data from API', async () => {
     const categoryTextList = await screen.findAllByTestId('category-checkbox-text');
-    expect(categoryTextList[0].textContent).toBe(categories.results[0].data.name);
+    categoryTextList.forEach((category, index) => expect(category).toHaveTextContent(categories.results[index].data.name));
   });
 
   it('filters on click', async () => {
