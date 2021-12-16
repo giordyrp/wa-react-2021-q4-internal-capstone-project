@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const Card = ({ cover, children, ...restProps }) => {
   return (
     <Styled.Card {...restProps}>
+      {' '}
       {cover && React.cloneElement(cover, { className: 'cover' })}
       {children}
     </Styled.Card>
@@ -12,7 +13,7 @@ const Card = ({ cover, children, ...restProps }) => {
 };
 
 Card.propTypes = {
-  cover: PropTypes.element
+  cover: PropTypes.element,
 };
 
 export default Card;

@@ -47,7 +47,8 @@ const useQueryAPI = (initialQuery) => {
               }`
           )
           .join('&');
-  
+
+          
         const response = await fetch(`${API_BASE_URL}/documents/search?ref=${apiRef}&${params}`, {
           signal: controller.signal,
         });

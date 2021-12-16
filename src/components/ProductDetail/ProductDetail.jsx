@@ -33,7 +33,7 @@ const ProductDetail = ({ product }) => {
     },
   } = product;
 
-  const cartProduct= cart.find((cartProduct) => cartProduct.id === id);
+  const cartProduct = cart.find((cartProduct) => cartProduct.id === id);
 
   const imageList = images.map((image) => ({
     original: image.image.url,
@@ -74,13 +74,7 @@ const ProductDetail = ({ product }) => {
       <Section>
         <Row>
           <Col xs={12} md={7}>
-            <ImageGallery
-              items={imageList}
-              thumbnailPosition={setThumbnailPosition()}
-              showBullets={false}
-              showPlayButton={false}
-              showFullscreenButton={false}
-            />
+            <ImageGallery items={imageList} thumbnailPosition={setThumbnailPosition()} showBullets={false} showPlayButton={false} showFullscreenButton={false} />
           </Col>
           <Col xs={12} md={5}>
             <Styled.Category>{categoryName}</Styled.Category>
@@ -112,14 +106,11 @@ const ProductDetail = ({ product }) => {
               >
                 {cartProduct ? 'Remove from' : 'Add to'} Cart
               </Styled.ActionButton>
-              <Styled.ActionButton
-                color="primary"
-                size="large"
-                disabled={countToBuy === 0 || !validateStock()}
-              >
+              <Styled.ActionButton color="primary" size="large" disabled={countToBuy === 0 || !validateStock()}>
                 Buy Now
               </Styled.ActionButton>
             </Styled.ActionsFlexDiv>
+            {stock === 0 && <Styled.UnavailableMessage>Producto no disponible</Styled.UnavailableMessage>}
           </Col>
         </Row>
         <h3>Description</h3>

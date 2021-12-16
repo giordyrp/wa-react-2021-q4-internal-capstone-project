@@ -1,0 +1,12 @@
+{
+  "plugins": ["react"],
+  "extends": ["react-app"],
+  "rules": {
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ]
+  }
+}

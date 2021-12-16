@@ -3,8 +3,6 @@ import Home from '../Home';
 import Products from '../Products';
 import Product from '../Product';
 import Search from '../Search';
-import GlobalStyle from '../../styles/GlobalStyle';
-import Theme from '../../styles/Theme';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import Cart from '../Cart';
 import Checkout from '../Checkout';
@@ -45,13 +43,12 @@ const App = () => {
   }, [location.pathname]);
 
   return (
-    <Theme>
-      <GlobalStyle />
-      <Switch>
-        {routes.map(route => <Route key={route.path} {...route}/>)}
-        <Redirect to="/" />
-      </Switch>
-    </Theme>
+    <Switch>
+      {routes.map((route) => (
+        <Route key={route.path} {...route} />
+      ))}
+      <Redirect to="/" />
+    </Switch>
   );
 };
 

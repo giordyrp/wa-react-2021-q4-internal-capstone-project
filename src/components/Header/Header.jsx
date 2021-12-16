@@ -20,18 +20,8 @@ export const Header = () => {
     <Styled.Nav justify="space-between" align="center" wrap="wrap">
       {showSearch ? (
         <>
-          <Button
-            color="transparent"
-            icon={<FontAwesomeIcon icon={faArrowLeft} />}
-            size="large"
-            onClick={toggleShowSearch}
-          />
-          <Styled.MobileSearchInput
-            value={searchValue}
-            onChange={(evt) => setSearchValue(evt.target.value)}
-            onSearch={() => history.push(`/search?q=${searchValue}`)}
-            width="80%"
-          />
+          <Button color="transparent" icon={<FontAwesomeIcon icon={faArrowLeft} />} size="large" onClick={toggleShowSearch} />
+          <Styled.MobileSearchInput value={searchValue} onChange={(evt) => setSearchValue(evt.target.value)} onSearch={() => history.push(`/search?q=${searchValue}`)} width="80%" />
         </>
       ) : (
         <>
@@ -43,30 +33,27 @@ export const Header = () => {
             </Styled.Hamburger>
             <Logo data-testid="header-logo" />
           </FlexDiv>
-          <Styled.DesktopSearchInput
-            value={searchValue}
-            onChange={(evt) => setSearchValue(evt.target.value)}
-            onSearch={() => history.push(`/search?q=${searchValue}`)}
-            width="250px"
-          />
+          <Styled.DesktopSearchInput value={searchValue} onChange={(evt) => setSearchValue(evt.target.value)} onSearch={() => history.push(`/search?q=${searchValue}`)} width="250px" />
           <Styled.Menu active={showMenu}>
             <Styled.MenuLinks>
               <Styled.MenuLink to="/" exact>
                 Home
               </Styled.MenuLink>
-              <Styled.MenuLink to="/products" onClick={toggleShowSearch}>Products</Styled.MenuLink>
-              <Styled.MenuLink to="/contact" onClick={toggleShowSearch}>Contact</Styled.MenuLink>
-              <Styled.MenuLink to="/about-us" onClick={toggleShowSearch}>About Us</Styled.MenuLink>
+              <Styled.MenuLink to="/products" onClick={toggleShowSearch}>
+                Products
+              </Styled.MenuLink>
+              <Styled.MenuLink to="/contact" onClick={toggleShowSearch}>
+                Contact
+              </Styled.MenuLink>
+              <Styled.MenuLink to="/about-us" onClick={toggleShowSearch}>
+                About Us
+              </Styled.MenuLink>
             </Styled.MenuLinks>
           </Styled.Menu>
           <FlexDiv>
-            <Styled.ShowSearchButton
-              color="primary"
-              icon={<FontAwesomeIcon icon={faSearch} />}
-              onClick={toggleShowSearch}
-            />
-            <Button color="primary" icon={<FontAwesomeIcon icon={faCartPlus} />} onClick={() => history.push('/cart')}>
-              {cart.reduce((acc, product) => acc  + product.count , 0)}
+            <Styled.ShowSearchButton color="primary" icon={<FontAwesomeIcon icon={faSearch} />} onClick={toggleShowSearch} />
+            <Button color="primary" icon={<FontAwesomeIcon icon={faCartPlus} />} onClick={() => history.push('/cart')} data-testid="cart-header-button">
+              {cart.reduce((acc, product) => acc + product.count, 0)}
             </Button>
           </FlexDiv>
         </>

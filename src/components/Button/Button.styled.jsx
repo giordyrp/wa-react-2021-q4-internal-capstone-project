@@ -14,12 +14,18 @@ export const Button = styled.button`
   border: none;
   padding: 10px 13px;
   border-radius: 8px;
-  ${({ width }) => width && css`width: ${width};` };
+  ${({ width }) =>
+    width &&
+    css`
+      width: ${width};
+    `};
 
-  ${({ disabled }) => disabled && css`
-      color:rgb(179, 185, 194) !important;
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      color: rgb(179, 185, 194) !important;
       background-color: rgb(230, 235, 241) !important;
-  `}
+    `}
 
   ${({ theme, color, disabled }) => {
     if (!color) return null;
@@ -28,7 +34,7 @@ export const Button = styled.button`
       primary: ['white', theme.colors.primary],
       transparent: ['black', 'transparent'],
       white: ['black', 'white'],
-      danger: ['white', theme.colors.danger]
+      danger: ['white', theme.colors.danger],
     };
 
     return css`

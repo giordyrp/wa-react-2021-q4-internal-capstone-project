@@ -5,9 +5,9 @@ import * as Styled from './Logo.styled';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 
-const Logo = (props) => {
+const Logo = ({ dark, ...restProps }) => {
   const history = useHistory();
-  return <Styled.Logo src={props.dark ? LogoDark : LogoLight} onClick={() => history.push('/')} />;
+  return <Styled.Logo src={dark ? LogoDark : LogoLight} onClick={() => history.push('/')} {...restProps} />;
 };
 
 Logo.propTypes = {
