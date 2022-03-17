@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import Button from '../Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faCartPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { ProductCartContext } from '../../contexts/ProductCartContext';
+import { ProductCartContext } from '../../contexts/productCartContext';
 
 export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);

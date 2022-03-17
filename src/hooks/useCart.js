@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ProductCartContext } from '../contexts/ProductCartContext';
+import { ProductCartContext } from '../contexts/productCartContext';
 import useQueryAPI from './useQueryAPI';
 
 const useCart = () => {

@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ImageGallery from 'react-image-gallery';
 import { useTheme } from 'styled-components';
-import { ProductCartContext } from '../../contexts/ProductCartContext';
+import { ProductCartContext } from '../../contexts/productCartContext';
 import CartProductCount from '../CartProductCount';
 
 const ProductDetail = ({ product }) => {
@@ -48,7 +48,7 @@ const ProductDetail = ({ product }) => {
     const productFromCart = cart.find((product) => product.id === id);
     let count = countToBuy;
     if (productFromCart) {
-      count += productFromCart.count;
+      count = productFromCart.count;
     }
     return count <= stock;
   };

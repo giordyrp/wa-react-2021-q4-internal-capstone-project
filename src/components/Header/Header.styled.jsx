@@ -50,7 +50,7 @@ export const Menu = styled.nav`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   left: -100%;
-  top: 64px;
+  top: 62px;
   flex-direction: column;
   width: 100%;
   height: 100%;

@@ -7,7 +7,7 @@ import Spinner from '../Spinner';
 import Empty from '../Empty';
 import { useHistory } from 'react-router';
 import { setParam } from '../../utils/functions';
-import { ProductCartContext } from '../../contexts/ProductCartContext';
+import { ProductCartContext } from '../../contexts/productCartContext';
 
 const ProductList = ({ products, loading, grid, pagination }) => {
   const { cart, addProductToCart, removeProductFromCart, setProductCountFromCart } = useContext(ProductCartContext);

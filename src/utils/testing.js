@@ -1,5 +1,5 @@
 import Theme from '../styles/Theme';
-import ProductCartProvider from '../contexts/ProductCartContext';
+import ProductCartProvider from '../contexts/productCartContext';
 import { BrowserRouter } from 'react-router-dom';
 
 export const AppWrapper = ({ children }) => (
